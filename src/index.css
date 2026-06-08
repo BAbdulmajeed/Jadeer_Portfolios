@@ -466,179 +466,272 @@
 /* My Projects Page Styles */
 /* Styles for displaying and managing user projects */
 
-.projects-page {
-  padding: 60px 80px;
+/* الحاوية الأساسية: استخدام flex-wrap لكي ينزل السايدبار بالأسفل تلقائياً في شاشات الجوال الصغيره وحفظ المساحة */
+.profile-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 30px;
+  padding: 30px 20px;
+  box-sizing: border-box;
 }
 
-.projects-header {
+/* عمود السايدبار الجانبي الأيسر: مرونة كاملة في العرض بناءً على الشاشة */
+.profile-sidebar {
+  width: 100%;
+  max-width: 300px;
+  flex: 1 1 280px; /* يتقلص ويتمدد بذكاء ويأخذ مساحته بدقة */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+.avatar-container-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.edit-avatar-btn {
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* إلغاء تنسيقات الأزرار النصية */
+.editable-text-btn, .section-edit-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+  width: 100%;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111827;
+  word-wrap: break-word; /* منع النص الطويل من تخريب الشاشة */
+}
+
+.profile-location {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.profile-section-block {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 15px;
+}
+
+.profile-section-block h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #111827;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-section-block p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.profile-skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-skills-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #334155;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.skill-level {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* القسم الرئيسي الأيمن المتجاوب */
+.profile-main-content {
+  flex: 1 1 600px; /* يأخذ المساحة الكبرى المتبقية من الشاشة بمرونة */
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* منع الخروج المفاجئ للعناصر في الـ Grid */
+}
+
+/* زر الغلاف المتجاوب */
+.profile-cover-banner-btn {
+  width: 100%;
+  height: 200px;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.cover-inner-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 30px;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.projects-header button {
-  background: #2563eb;
-  color: white;
-
-  border: none;
-
-  padding: 12px 18px;
-
+.share-profile-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 8px 14px;
   border-radius: 10px;
-
   cursor: pointer;
+  font-weight: 600;
+  color: #334155;
+  font-size: 13px;
 }
 
+/* شريط التبويبات المتجاوب */
+.profile-tabs-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e2e8f0;
+  margin-top: 25px;
+  flex-wrap: wrap; /* النزول لسطر جديد إذا كانت الشاشة ضيقة جداً للزر والروابط */
+  gap: 15px;
+}
+
+.tabs-links {
+  display: flex;
+  gap: 20px;
+}
+
+.tab-link {
+  background: none;
+  border: none;
+  padding: 10px 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab-link.active {
+  color: #2563eb;
+}
+
+.tab-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2563eb;
+}
+
+/* شبكة المشاريع المتجاوبة تلقائياً */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+  margin-top: 20px;
 }
 
 .project-box {
   background: white;
-
-  padding: 25px;
-
+  padding: 20px;
   border-radius: 15px;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
-
-.project-box p {
-  color: #64748b;
-  margin: 15px 0;
-}
-
-.project-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.project-actions button {
-  border: none;
-
-  padding: 10px 15px;
-
-  border-radius: 8px;
-
-  cursor: pointer;
-}
-
-.delete-btn {
-  background: #ef4444 !important;
-  color: white;
-}
-
-
-.add-project-btn {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 10px;
-  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,.04);
+  border: 1px solid #f1f5f9;
 }
 
 .project-box img {
   width: 100%;
-  height: 220px;
+  height: 160px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-.project-box h3 {
-  margin-bottom: 10px;
-}
-
-.project-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.view-btn {
-  background: #2563eb;
-  color: white;
-}
-
-.edit-btn {
-  background: #f59e0b;
-  color: white;
-}
-
-.delete-btn {
-  background: #ef4444;
-  color: white;
-}
-
-.project-actions button {
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* Project Details Page Styles */
-/* Styles for displaying detailed project information */
-
-.details-page {
-  padding: 60px 80px;
-}
-
-.details-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
-
-.project-banner {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 25px;
-}
-
-.project-tech {
-  color: #2563eb;
-  font-weight: 600;
-  margin: 15px 0;
-}
-
-.project-description {
-  color: #64748b;
-  line-height: 1.8;
-}
-
-.project-links {
-  display: flex;
-  gap: 20px;
-  margin: 25px 0;
-}
-
-.project-links a {
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  padding: 12px 18px;
   border-radius: 10px;
+  margin-bottom: 12px;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
+.empty-tab-placeholder {
+  padding: 50px 20px;
+  text-align: center;
+  color: #64748b;
+  background: #f8fafc;
+  border-radius: 15px;
   margin-top: 20px;
+  border: 1px dashed #e2e8f0;
 }
 
-.gallery img {
-  width: 100%;
-  border-radius: 12px;
+/* مظهر زر العرض (View) باللون الأزرق */
+.project-actions .view-btn {
+  background-color: #2563eb;
+  color: white;
+  transition: background-color 0.3s;
 }
 
+.project-actions .view-btn:hover {
+  background-color: #1d4ed8; /* يغمق اللون قليلاً عند تمرير الماوس */
+}
+
+/* مظهر زر التعديل (Edit) باللون البرتقالي/الأصفر */
+.project-actions .edit-btn {
+  background-color: #f59e0b;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.project-actions .edit-btn:hover {
+  background-color: #d97706;
+}
+
+/* مظهر زر الحذف (Delete) باللون الأحمر */
+.project-actions .delete-btn {
+  background-color: #ef4444;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.project-actions .delete-btn:hover {
+  background-color: #dc2626;
+}
 
 /* About Page Styles */
 /* Styles for the About JADEER page */
