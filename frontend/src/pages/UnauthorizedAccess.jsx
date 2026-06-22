@@ -6,25 +6,15 @@ export default function UnauthorizedAccess() {
 
   return (
     <div className="unauthorized-page">
-
-      <div className="auth-card">
-
+      <div className="unauthorized-card">
         <h1>Unauthorized Access</h1>
 
-        <div className="auth-footer">
+        <div className="unauthorized-footer">
+          <span>Already have an account?</span>
 
-          <span>
-            Already have an account?
-          </span>
-
-          <Link to="/login">
-            Login
-          </Link>
-
+          <Link to="/login">Login</Link>
         </div>
-
       </div>
-
     </div>
   );
 }

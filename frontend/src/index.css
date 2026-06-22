@@ -131,7 +131,7 @@
 .hero-right video {
   width: 450px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .featured {
@@ -159,7 +159,7 @@
   padding: 25px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .stat-box h3 {
@@ -261,7 +261,7 @@
   background: white;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .contact-card {
@@ -302,7 +302,7 @@
   background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .auth-badge {
@@ -446,7 +446,7 @@ div.portfolio-page .portfolio-card textarea {
   background: #ffffff;
   padding: 25px;
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   height: fit-content;
 }
@@ -612,9 +612,8 @@ div.portfolio-page .portfolio-card textarea {
   vertical-align: middle !important;
 }
 
-
 .portfolio-form-actions,
-.profile-sidebar button+button {
+.profile-sidebar button + button {
   margin-left: 10px !important;
 }
 
@@ -653,7 +652,10 @@ div.portfolio-page .portfolio-card textarea {
 .add-btn-sidebar,
 .location-field-block button,
 button[type="submit"],
-.profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):not(.level-button):not(.delete-btn-inline) {
+.profile-sidebar
+  button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):not(
+    .level-button
+  ):not(.delete-btn-inline) {
   background-color: #70a1ff !important;
   color: #ffffff !important;
   border: none !important;
@@ -663,22 +665,22 @@ button[type="submit"],
   font-size: 12px !important;
   cursor: pointer !important;
   box-shadow: none !important;
-  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease !important;
 }
 
 .add-btn-sidebar:hover,
 .location-field-block button:hover,
 button[type="submit"]:hover,
-.profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):hover {
+.profile-sidebar
+  button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):hover {
   background-color: #548cf5 !important;
 }
 
 .add-btn-sidebar:hover {
   transform: scale(1.05) !important;
 }
-
-
-
 
 .portfolio-external-link {
   color: #70a1ff !important;
@@ -701,7 +703,6 @@ button[type="submit"]:hover,
   padding: 4px 10px !important;
   font-size: 11px !important;
 }
-
 
 /* الحاوية المرنة لأسطر العرض المضافة (مهارات، لغات، روابط) */
 .skills-item-wrapper,
@@ -763,7 +764,6 @@ button[type="submit"]:hover,
   margin-left: auto !important;
   transition: background-color 0.2s ease !important;
 }
-
 
 .profile-field-block ol li button:not(.level-button):hover,
 .details-card ol li button:not(.level-button):hover,
@@ -864,7 +864,7 @@ button[type="submit"]:hover,
   background: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, .04);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   border: 1px solid #f1f5f9;
 }
 
@@ -931,6 +931,8 @@ button[type="submit"]:hover,
   display: inline-block;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-top: -10px !important;
+  margin-bottom: 5px !important;
 }
 
 .add-project-btn-inside:hover {
@@ -948,7 +950,7 @@ button[type="submit"]:hover,
 .resume-actions-container,
 .certifications-gallery-container {
   display: flex !important;
-  gap: 10px !important;
+  gap: 15px !important;
   justify-content: center !important;
   margin-top: 15px !important;
 }
@@ -962,7 +964,10 @@ button[type="submit"]:hover,
 .tab-actions-wrapper button,
 .tab-actions-wrapper a,
 .tab-actions-wrapper .gallery-add-btn,
-.tab-actions-wrapper .gallery-upload-btn {
+.tab-actions-wrapper .gallery-upload-btn .view-resume-link,
+.delete-resume-btn,
+.update-resume-btn,
+.tab-actions-wrapper .delete-btn {
   background-color: #ffffff !important;
   color: #2d3748 !important;
   border: 1px solid #e2e8f0 !important;
@@ -976,35 +981,19 @@ button[type="submit"]:hover,
   align-items: center !important;
   justify-content: center !important;
   text-decoration: none !important;
+  margin: 0 2px 2px 2px !important;
+  font-family: "Inter";
 }
 
 .tab-actions-wrapper button:hover,
 .tab-actions-wrapper a:hover,
-.tab-actions-wrapper .gallery-add-btn:hover {
+.tab-actions-wrapper .gallery-add-btn:hover,
+.view-resume-link:hover,
+.delete-resume-btn:hover,
+.update-resume-btn:hover,
+.tab-actions-wrapper .delete-btn:hover {
   background-color: #f8fafc !important;
   border-color: #cbd5e1 !important;
-}
-
-.view-resume-link {
-  background-color: #2563eb !important;
-  color: white !important;
-  border-color: #2563eb !important;
-}
-
-.view-resume-link:hover {
-  background-color: #1d4ed8 !important;
-}
-
-.delete-resume-btn,
-.tab-actions-wrapper .delete-btn {
-  background-color: #ef4444 !important;
-  color: white !important;
-  border-color: #ef4444 !important;
-}
-
-.delete-resume-btn:hover,
-.tab-actions-wrapper .delete-btn:hover {
-  background-color: #dc2626 !important;
 }
 
 /* بطاقة تفاصيل المشروع */
@@ -1123,8 +1112,10 @@ div.details-page .links-panel h3 {
 
 .gallery-media-img,
 .gallery-media-iframe {
-  width: 400px !important;
-  height: 300px !important;
+  width: 80% !important; /* increase width */
+  height: 600px !important; /* taller for better visibility */
+  border: none !important;
+  border-radius: 10px !important;
 }
 
 .gallery-media-img {
@@ -1187,4 +1178,66 @@ div.details-page .links-panel h3 {
   text-align: center;
   padding: 20px;
   border-top: 1px solid #334155;
+}
+
+/* ==========================================================================
+   11. صفحة غير مصرح 
+   ========================================================================== */
+.unauthorized-page {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  height: 40vh; /* makes the container take most of the viewport height */
+}
+
+.unauthorized-card {
+  text-align: center;
+  width: 450px;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.unauthorized-footer {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.unauthorized-footer a {
+  color: #2563eb;
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   11. صفحة غير موجودة 
+   ========================================================================== */
+.pageNotFound-page {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  height: 40vh; /* makes the container take most of the viewport height */
+}
+
+.pageNotFound-card {
+  text-align: center;
+  width: 450px;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.pageNotFound-footer {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.pageNotFound-footer a {
+  color: #2563eb;
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: bold;
 }

@@ -5,26 +5,16 @@ export default function PageNotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="auth-page">
-
-      <div className="auth-card">
-
-
+    <div className="pageNotFound-page">
+      <div className="pageNotFound-card">
         <h1>404</h1>
 
-        <p>
-          Page Not Found
-        </p>
+        <p>Page Not Found</p>
 
-
-        <div className="auth-footer">
-          <Link to="/">
-            back to home page
-          </Link>
+        <div className="pageNotFound-footer">
+          <Link to="/">back to home page</Link>
         </div>
-
       </div>
-
     </div>
   );
 }
