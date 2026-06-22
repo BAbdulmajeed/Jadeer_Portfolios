@@ -1,17 +1,13 @@
-/* Navbar Styles */
-/* Styles for the navigation bar and menu links */
-
+/* ==========================================================================
+   1. النوافذ العامة وشريط التنقيل (Navbar & Layout Styles)
+   ========================================================================== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 18px 60px;
-
   background: white;
-
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -37,7 +33,8 @@
   transition: 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.login-btn:hover {
   color: #2563eb;
 }
 
@@ -54,23 +51,14 @@
   font-weight: 600;
 }
 
-.login-btn:hover {
-  color: #2563eb;
-}
-
 .signup-btn {
   text-decoration: none;
-
   background: #2563eb;
   color: white;
-
   padding: 10px 18px;
-
   border-radius: 10px;
-
   font-size: 14px;
   font-weight: 600;
-
   transition: 0.3s;
 }
 
@@ -78,57 +66,9 @@
   background: #5b54e8;
 }
 
-/* Footer Styles */
-/* Styles for the footer section and contact information */
-
-.footer {
-  background: #0f172a;
-  color: white;
-  margin-top: 80px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
-
-  padding: 50px 80px;
-}
-
-.footer-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-section h3,
-.footer-section h4 {
-  margin-bottom: 15px;
-}
-
-.footer-section p {
-  color: #cbd5e1;
-  line-height: 1.8;
-}
-
-.footer-section a {
-  text-decoration: none;
-  color: #cbd5e1;
-  margin-bottom: 8px;
-}
-
-.footer-section a:hover {
-  color: white;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid #334155;
-}
-
-/* Home Page Styles */
-/* Styles for the homepage including hero section and statistics */
-
+/* ==========================================================================
+   2. الصفحة الرئيسية (Home Page Styles)
+   ========================================================================== */
 .home {
   padding: 40px 80px;
 }
@@ -194,9 +134,6 @@
   box-shadow: 0 10px 25px rgba(0,0,0,.1);
 }
 
-/* Featured Section Styles */
-/* Styles for featured portfolios */
-
 .featured {
   margin-top: 80px;
 }
@@ -209,17 +146,6 @@
   display: flex;
   gap: 20px;
 }
-
-.portfolio-card {
-  flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
-
-/* Statistics Section Styles */
-/* Styles for platform statistics */
 
 .stats {
   margin-top: 60px;
@@ -241,26 +167,29 @@
   font-size: 30px;
 }
 
-
-/* Browse Page Styles */
-/* Styles for browsing and searching student portfolios */
-
-.browse-page {
+/* ==========================================================================
+   3. صفحات التصفح والمعلومات (Browse, About & Contact)
+   ========================================================================== */
+.browse-page, .about-page, .contact-page {
   padding: 50px 80px;
 }
 
-.browse-header {
+.browse-header, .about-hero, .contact-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-.browse-header h1 {
+.browse-header h1, .about-hero h1, .contact-header h1 {
   font-size: 45px;
   margin-bottom: 10px;
+  color: #111827;
 }
 
-.browse-header p {
+.browse-header p, .about-hero p, .contact-header p {
   color: #64748b;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
 }
 
 .categories {
@@ -313,32 +242,56 @@
   font-weight: 600;
 }
 
-.search-bar button:hover {
-  opacity: 0.9;
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-/* Authentication Pages Styles */
-/* Styles for Login and Register pages */
+.about-card, .contact-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
 
+.contact-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.about-card h2 {
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+.about-card p, .about-card li {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.about-card ul {
+  padding-left: 20px;
+}
+
+/* ==========================================================================
+   4. صفحات تسجيل الدخول وإنشاء البورتفوليو الأساسية (Auth & Portfolio Creation)
+   ========================================================================== */
 .auth-page {
   min-height: 80vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 40px;
 }
 
 .auth-card {
   width: 450px;
-
   background: white;
-
   padding: 40px;
-
   border-radius: 20px;
-
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
@@ -358,115 +311,105 @@
   margin-bottom: 25px;
 }
 
-.auth-card form {
+.auth-card form, .contact-card form {
   display: flex;
   flex-direction: column;
 }
 
-.auth-card label {
+.auth-card label, .contact-card label {
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-.auth-card input {
+.auth-card input, .contact-card input, .contact-card textarea {
   padding: 14px;
-
   border: 1px solid #d1d5db;
-
   border-radius: 10px;
-
   margin-bottom: 20px;
 }
 
-.auth-card button {
+.auth-card button, .contact-card button {
   background: #2563eb;
-
   color: white;
-
   border: none;
-
   padding: 14px;
-
   border-radius: 10px;
-
   cursor: pointer;
 }
 
 .auth-footer {
   margin-top: 25px;
-
   text-align: center;
 }
 
 .auth-footer a {
   color: #2563eb;
-
   margin-left: 5px;
-
   text-decoration: none;
-
   font-weight: bold;
 }
 
-/* Create Portfolio Page Styles */
-/* Styles for creating and editing student portfolios */
-
-.portfolio-page {
-  display: flex;
-  justify-content: center;
-  padding: 60px 20px;
-}
-
-.portfolio-card {
-  width: 700px;
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-}
-
-.portfolio-card h1 {
-  margin-bottom: 10px;
-}
-
-.portfolio-card p {
-  color: #64748b;
-  margin-bottom: 25px;
-}
-
-.portfolio-card form {
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio-card label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  margin-top: 10px;
-}
-
-.portfolio-card input,
-.portfolio-card textarea {
+p.login-error {
+  background-color: #dc262642;
+  border: 2px solid #ff0000;
+  color: #d30000;
+  text-align: center;
   padding: 14px;
-  border: 1px solid #d1d5db;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.portfolio-card button {
-  margin-top: 20px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 15px;
-  border-radius: 10px;
-  cursor: pointer;
+/* إصلاح جذري وموحد لصفحة إنشاء وإضافة مشروع */
+div.portfolio-page {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #f8fafc !important;
+  padding: 60px 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* My Projects Page Styles */
-/* Styles for displaying and managing user projects */
+div.portfolio-page .portfolio-card {
+  max-width: 650px !important;
+  width: 100% !important;
+  background: #ffffff !important;
+  padding: 40px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  box-sizing: border-box !important;
+}
 
-/* الحاوية الأساسية: استخدام flex-wrap لكي ينزل السايدبار بالأسفل تلقائياً في شاشات الجوال الصغيره وحفظ المساحة */
+div.portfolio-page form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+div.portfolio-page .portfolio-card label{
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+}
+
+div.portfolio-page .portfolio-card input,
+div.portfolio-page .portfolio-card textarea {
+  width: 100% !important;
+  padding: 12px 16px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+  background-color: #f8fafc !important;
+}
+
+/* ==========================================================================
+   5. إدارة الملف الشخصي والسايدبار الجانبي (Profile & Sidebar)
+   ========================================================================== */
 .profile-page-container {
   display: flex;
   flex-wrap: wrap;
@@ -478,11 +421,10 @@
   box-sizing: border-box;
 }
 
-/* عمود السايدبار الجانبي الأيسر: مرونة كاملة في العرض بناءً على الشاشة */
 .profile-sidebar {
   width: 100%;
   max-width: 300px;
-  flex: 1 1 280px; /* يتقلص ويتمدد بذكاء ويأخذ مساحته بدقة */
+  flex: 1 1 280px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -515,28 +457,29 @@
   overflow: hidden;
 }
 
-/* إلغاء تنسيقات الأزرار النصية */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .editable-text-btn, .section-edit-trigger {
   background: none;
   border: none;
   padding: 0;
-  text-align: left;
+  text-align: start;
   font-family: inherit;
   cursor: pointer;
   color: inherit;
-  width: 100%;
+  width: 90%;
 }
 
 .profile-name {
   font-size: 24px;
   font-weight: 800;
   color: #111827;
-  word-wrap: break-word; /* منع النص الطويل من تخريب الشاشة */
-}
-
-.profile-location {
-  font-size: 14px;
-  color: #64748b;
+  word-wrap: break-word;
 }
 
 .profile-section-block {
@@ -560,38 +503,264 @@
   word-break: break-word;
 }
 
-.profile-skills-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* دمج وتحسين المسافات وحقول المدخلات في السايدبار الموحد */
+.profile-field-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  margin-bottom: 25px !important;
+  width: 100%;
+}
+
+.profile-field-block textarea {
+  resize: none !important;      
+  overflow-y: auto !important;  
+}
+
+.profile-field-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 2px !important;
+}
+
+.profile-field-header span {
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+}
+
+.profile-input-row {
+  display: flex !important;
+  gap: 6px !important;
+  width: 100% !important;
+  margin-bottom: 2px !important;
+  align-items: center !important;
+}
+
+.profile-input-row input,
+.profile-input-row select {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.skills-list, .languages-list, .links-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.location-field-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  margin-top: 30px !important;
+  margin-bottom: 5px !important;
+  width: 100%;
+}
+
+.location-field-block input[type="text"] {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* كود تنسيق القائمة */
+
+.profile-field-block ol {
+  margin-top: 12px !important;
+  margin-bottom: 5px !important;
+  padding-left: 20px !important;  
+  list-style-type: decimal !important; 
+}
+
+.profile-field-block ol li {
+  margin-bottom: 12px !important;   
+  color: #334155 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  word-break: break-all !important; 
+}
+
+/* إضافة حاوية مرنة داخلية للأزرار التابعة لكل سطر مضاف */
+.profile-field-block ol li .level-button,
+.profile-field-block ol li button {
+  margin-left: 8px !important;     
+  vertical-align: middle !important;
+}
+
+
+.portfolio-form-actions, 
+.profile-sidebar button + button {
+  margin-left: 10px !important; 
+}
+
+/* ==========================================================================
+   6. التنسيق الموحد للحقول والأزرار داخل السايدبار (Sidebar Inputs & Buttons)
+   ========================================================================== */
+.profile-field-block input,
+.profile-field-block select,
+.profile-sidebar textarea, 
+.location-field-block input,
+.details-card input[type="text"],
+.details-card input[type="date"],
+.details-card textarea {
+  border: 2px solid #e2e8f0 !important; 
+  box-sizing: border-box !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #f8fafc !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.profile-field-block input:focus,
+.profile-field-block select:focus,
+.profile-sidebar textarea:focus,
+.location-field-block input:focus,
+.details-card input:focus,
+.details-card textarea:focus {
+  border-color: #70a1ff !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* أزرار الإضافة والحفظ الموحدة الدائرية للسايدبار */
+.add-btn-sidebar, 
+.location-field-block button, 
+button[type="submit"], 
+ .profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):not(.level-button):not(.delete-btn-inline){
+  background-color: #70a1ff !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.add-btn-sidebar:hover,
+.location-field-block button:hover, 
+button[type="submit"]:hover,
+.profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):hover {
+  background-color: #548cf5 !important;
+}
+
+.add-btn-sidebar:hover {
+  transform: scale(1.05) !important;
+}
+
+
+
+
+.portfolio-external-link {
+  color: #70a1ff !important; /* مطابق للون الهوية الرئيسي للأزرار */
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: color 0.2s ease !important;
+  word-break: break-word !important;
+}
+
+.portfolio-external-link:hover {
+  color: #548cf5 !important;
+  text-decoration: underline !important; /* يظهر خط تحت الرابط عند التمرير للتنبيه */
+}
+
+/* ضبط أزرار الحذف المضمنة داخل السطور لمنع تداخلها */
+.delete-btn-inline {
+  margin-left: auto !important; 
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+}
+
+
+/* الحاوية المرنة لأسطر العرض المضافة (مهارات، لغات، روابط) */
+.skills-item-wrapper, 
+.languages-item-wrapper, 
+.link-item-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important; 
+  width: 100% !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+  margin-bottom: 6px !important;
+}
+
+/* توحيد أسماء المهارات واللغات لتكون متناسقة */
+.skill-name-text, 
+.language-name-text {
+  font-weight: 600 !important;
+  color: #334155 !important;
+  font-size: 14px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex-grow: 1 !important;
+}
+
+/* توحيد أزرار مستويات المهارة واللغة باللون الرمادي الناعم في جميع الصفحات */
+.profile-field-block ol li .level-button,
+.details-card ol li .level-button,
+.level-button {
+  background-color: #f1f5f9 !important; 
+  color: #475569 !important;            
+  border: 1px solid #cbd5e1 !important;  
+  padding: 5px 12px !important;
+  border-radius: 20px !important;       
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
+  margin-left: 8px !important;
+}
+
+/* توحيد أزرار الحذف (Delete) باللون الأحمر الدائري في جميع الصفحات */
+.profile-field-block ol li button:not(.level-button),
+.details-card ol li button:not(.level-button),
+.delete-btn-inline {
+  background-color: #ef4444 !important; 
+  color: #ffffff !important;
+  border: none !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;       
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;          
+  transition: background-color 0.2s ease !important;
+}
+
+
+.profile-field-block ol li button:not(.level-button):hover,
+.details-card ol li button:not(.level-button):hover,
+.delete-btn-inline:hover {
+  background-color: #dc2626 !important; 
+}
+/* ==========================================================================
+   7. القسم الرئيسي وعرض التبويبات والمشاريع (Main Content & Tabs)
+   ========================================================================== */
+.profile-main-content, .portfolio-main-tabs-wrapper {
+  flex: 1 1 600px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  min-width: 0;
+  width: 100% !important;
 }
 
-.profile-skills-list li {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  color: #334155;
-  border-bottom: 1px dashed #e2e8f0;
-  padding-bottom: 4px;
-}
-
-.skill-level {
-  font-weight: 600;
-  color: #2563eb;
-}
-
-/* القسم الرئيسي الأيمن المتجاوب */
-.profile-main-content {
-  flex: 1 1 600px; /* يأخذ المساحة الكبرى المتبقية من الشاشة بمرونة */
-  display: flex;
-  flex-direction: column;
-  min-width: 0; /* منع الخروج المفاجئ للعناصر في الـ Grid */
-}
-
-/* زر الغلاف المتجاوب */
 .profile-cover-banner-btn {
   width: 100%;
   height: 200px;
@@ -600,17 +769,6 @@
   border-radius: 20px;
   cursor: pointer;
   position: relative;
-  box-sizing: border-box;
-}
-
-.cover-inner-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   box-sizing: border-box;
 }
 
@@ -625,15 +783,15 @@
   font-size: 13px;
 }
 
-/* شريط التبويبات المتجاوب */
-.profile-tabs-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #e2e8f0;
-  margin-top: 25px;
-  flex-wrap: wrap; /* النزول لسطر جديد إذا كانت الشاشة ضيقة جداً للزر والروابط */
-  gap: 15px;
+/* دمج سطر التبويبات مع زر الإضافة على نفس السطر الموحد */
+/* تنسيق سطر التبويبات مع زر الإضافة على نفس السطر */
+.tabs-header-wrapper {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  margin-bottom: 20px !important;
 }
 
 .tabs-links {
@@ -644,12 +802,13 @@
 .tab-link {
   background: none;
   border: none;
-  padding: 10px 2px;
-  font-size: 15px;
+  padding: 8px 4px;
+  font-size: 16px;
   font-weight: 600;
   color: #64748b;
   cursor: pointer;
   position: relative;
+  transition: color 0.2s ease;
 }
 
 .tab-link.active {
@@ -657,16 +816,21 @@
 }
 
 .tab-link.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 100%;
-  height: 2px;
-  background: #2563eb;
+  height: 3px;
+  background-color: #2563eb;
+  border-radius: 2px;
 }
 
-/* شبكة المشاريع المتجاوبة تلقائياً */
+.tab-header-action-btn {
+  margin-bottom: 0px !important;
+}
+
+/* شبكة عرض كروت المشاريع المتجاوبة */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -689,7 +853,6 @@
   border-radius: 10px;
   margin-bottom: 12px;
 }
-
 .empty-tab-placeholder {
   padding: 50px 20px;
   text-align: center;
@@ -700,151 +863,289 @@
   border: 1px dashed #e2e8f0;
 }
 
-/* مظهر زر العرض (View) باللون الأزرق */
+/* أزرار الإجراءات على كروت المشاريع */
 .project-actions .view-btn {
   background-color: #2563eb;
   color: white;
   transition: background-color 0.3s;
 }
-
 .project-actions .view-btn:hover {
-  background-color: #1d4ed8; /* يغمق اللون قليلاً عند تمرير الماوس */
+  background-color: #1d4ed8;
 }
 
-/* مظهر زر التعديل (Edit) باللون البرتقالي/الأصفر */
 .project-actions .edit-btn {
   background-color: #f59e0b;
   color: white;
   transition: background-color 0.3s;
 }
-
 .project-actions .edit-btn:hover {
   background-color: #d97706;
 }
 
-/* مظهر زر الحذف (Delete) باللون الأحمر */
 .project-actions .delete-btn {
   background-color: #ef4444;
   color: white;
   transition: background-color 0.3s;
 }
-
 .project-actions .delete-btn:hover {
   background-color: #dc2626;
 }
 
-/* About Page Styles */
-/* Styles for the About JADEER page */
-
-.about-page {
-  padding: 60px 80px;
+.add-project-btn-inside {
+  width: auto !important;
+  padding: 10px 20px !important;
+  white-space: nowrap !important;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.about-hero {
-  text-align: center;
-  margin-bottom: 50px;
+.add-project-btn-inside:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+/* ==========================================================================
+   8. تبويبات السيرة الذاتية والشهادات والتفاصيل (Resume, Certs & Details)
+   ========================================================================== */
+.hidden-file-input {
+  display: none !important;
 }
 
-.about-hero h1 {
-  font-size: 50px;
-  color: #111827;
-  margin-bottom: 15px;
+.resume-actions-container, .certifications-gallery-container {
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+  margin-top: 15px !important;
 }
 
-.about-hero p {
-  max-width: 700px;
-  margin: auto;
-  color: #64748b;
-  line-height: 1.8;
+.certifications-gallery-container {
+  margin-top: 20px !important;
+  width: 100% !important;
 }
 
-.about-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-  gap: 25px;
+/* توحيد مظهر أزرار السيرة الذاتية والشهادات والمشروع المكتوبة كروابط */
+.tab-actions-wrapper button,
+.tab-actions-wrapper a,
+.tab-actions-wrapper .gallery-add-btn,
+.tab-actions-wrapper .gallery-upload-btn {
+  background-color: #ffffff !important;
+  color: #2d3748 !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 10px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
 }
 
-.about-card {
-  background: white;
-  padding: 30px;
-
-  border-radius: 15px;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+.tab-actions-wrapper button:hover,
+.tab-actions-wrapper a:hover,
+.tab-actions-wrapper .gallery-add-btn:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
 }
 
-.about-card h2 {
-  margin-bottom: 15px;
-  color: #2563eb;
+.view-resume-link {
+  background-color: #2563eb !important;
+  color: white !important;
+  border-color: #2563eb !important;
+}
+.view-resume-link:hover {
+  background-color: #1d4ed8 !important;
 }
 
-.about-card p,
-.about-card li {
-  color: #64748b;
-  line-height: 1.8;
+.delete-resume-btn, .tab-actions-wrapper .delete-btn {
+  background-color: #ef4444 !important;
+  color: white !important;
+  border-color: #ef4444 !important;
+}
+.delete-resume-btn:hover, .tab-actions-wrapper .delete-btn:hover {
+  background-color: #dc2626 !important;
 }
 
-.about-card ul {
-  padding-left: 20px;
+/* بطاقة تفاصيل المشروع */
+.details-card {
+  background: #ffffff;
+  padding: 24px;
+  margin-bottom: 20px;
 }
 
-/* Contact Page Styles */
-/* Styles for the contact form and communication page */
-
-.contact-page {
-  padding: 60px 80px;
+.details-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
-.contact-header {
-  text-align: center;
-  margin-bottom: 40px;
+.details-card .tab-actions-wrapper button {
+  background-color: #70a1ff !important;
+  color: #ffffff !important;            
+  border: 1px solid #70a1ff !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+}
+.details-card .tab-actions-wrapper button:hover {
+  background-color: #548eff !important;
 }
 
-.contact-header h1 {
-  font-size: 50px;
-  margin-bottom: 10px;
+.project-form-actions {
+  display: flex !important;
+  gap: 10px !important;
+  margin-top: 15px !important;
 }
 
-.contact-header p {
-  color: #64748b;
+.save-project-btn {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+.save-project-btn:hover {
+  background-color: #1d4ed8 !important;
 }
 
-.contact-card {
-  max-width: 700px;
-  margin: auto;
-
-  background: white;
-  padding: 40px;
-
-  border-radius: 20px;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+/* تنسيق الحاوية الكبرى لصفحة تفاصيل المشروع لجمع العناصر في المنتصف بعرض موحد */
+div.details-page {
+  max-width: 1000px !important;    /* العرض الأقصى المناسب ليتطابق مع باقي صفحات الموقع */
+  width: 100% !important;
+  margin: 0 auto !important;       /* لجعل الصفحة بأكملها تتوسط الشاشة */
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important;           
 }
 
-.contact-card form {
+/* توحيد البطاقات والأقسام الداخلية (تفاصيل، مهارات، روابط، معرض) لتأخذ نفس التنسيق والعرض */
+div.details-page .details-card,
+div.details-page .skills-panel,
+div.details-page .links-panel,
+div.details-page .project-gallery-section {
+  width: 100% !important;
+  background: #ffffff !important;
+  padding: 30px !important;
+  border-radius: 20px !important;  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+  box-sizing: border-box !important;
+}
+
+/* إصلاح العناوين لتصطف في أقصى اليسار/اليمين بالتوازي مع الحقول */
+div.details-page h3.section-title-label,
+div.details-page .skills-panel h3,
+div.details-page .links-panel h3 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1a202c !important;
+  text-transform: uppercase !important;
+  margin-bottom: 15px !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+/* ==========================================================================
+   9. معرض الصور والميديا (Gallery Section Styles)
+   ========================================================================== */
+.section-title-label {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1a202c !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+  width: 100%;
+}
+
+.project-gallery-section {
+  width: 100% !important;
+  margin-top: 20px !important;
+}
+
+.gallery-container-box {
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: center !important;
+  margin-top: 20px !important;
+  width: 95% !important;
+}
+
+.gallery-media-img, .gallery-media-iframe {
+  width: 400px !important;
+  height: 300px !important;
+}
+
+.gallery-media-img {
+  object-fit: contain !important;
+}
+
+.gallery-media-iframe {
+  border: none !important;
+}
+
+/* ==========================================================================
+   10. تذييل الصفحة (Footer Styles)
+   ========================================================================== */
+.footer {
+  background: #0f172a;
+  color: white;
+  margin-top: 80px;
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  box-sizing: border-box !important;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 50px 80px;
+}
+
+.footer-section {
   display: flex;
   flex-direction: column;
 }
 
-.contact-card label {
+.footer-section h3, .footer-section h4 {
+  margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section a {
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.footer-section a {
+  text-decoration: none;
   margin-bottom: 8px;
-  font-weight: 600;
 }
 
-.contact-card input,
-.contact-card textarea {
-  padding: 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.contact-card button {
-  background: #2563eb;
+.footer-section a:hover {
   color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 10px;
-  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #334155;
 }

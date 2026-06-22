@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 // Navigation bar component for navigating between pages.
 export default function Navbar() {
+
   return (
     <nav className="navbar">
 
@@ -17,13 +18,15 @@ export default function Navbar() {
       </div>
 
       <div className="auth-buttons">
-        <Link to="/login" className="login-btn">
-          Login
-        </Link>
 
-        <Link to="/register" className="signup-btn">
-          Sign Up
-        </Link>
+            <Link to="/login" className="login-btn">
+              Login
+            </Link>
+
+            <Link to="/register" className="signup-btn">
+              Sign Up
+            </Link>
+
       </div>
 
     </nav>
