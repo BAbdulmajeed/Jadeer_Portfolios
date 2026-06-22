@@ -877,7 +877,7 @@ button[type="submit"]:hover,
 }
 
 .empty-tab-placeholder {
-  padding: 50px 20px;
+  padding: 1px 10px;
   text-align: center;
   color: #64748b;
   background: #f8fafc;
@@ -967,7 +967,8 @@ button[type="submit"]:hover,
 .tab-actions-wrapper .gallery-upload-btn .view-resume-link,
 .delete-resume-btn,
 .update-resume-btn,
-.tab-actions-wrapper .delete-btn {
+.tab-actions-wrapper .delete-btn,
+.project-gallery-btn {
   background-color: #ffffff !important;
   color: #2d3748 !important;
   border: 1px solid #e2e8f0 !important;
@@ -982,7 +983,7 @@ button[type="submit"]:hover,
   justify-content: center !important;
   text-decoration: none !important;
   margin: 0 2px 2px 2px !important;
-  font-family: "Inter";
+  font-family: "Poppins";
 }
 
 .tab-actions-wrapper button:hover,
@@ -991,7 +992,8 @@ button[type="submit"]:hover,
 .view-resume-link:hover,
 .delete-resume-btn:hover,
 .update-resume-btn:hover,
-.tab-actions-wrapper .delete-btn:hover {
+.tab-actions-wrapper .delete-btn:hover,
+.project-gallery-btn:hover {
   background-color: #f8fafc !important;
   border-color: #cbd5e1 !important;
 }
@@ -1110,7 +1112,12 @@ div.details-page .links-panel h3 {
   width: 95% !important;
 }
 
-.gallery-media-img,
+.gallery-media-img {
+  width: 100% !important; /* increase width */
+  height: 600px !important; /* taller for better visibility */
+  border: none !important;
+  border-radius: 10px !important;
+}
 .gallery-media-iframe {
   width: 80% !important; /* increase width */
   height: 600px !important; /* taller for better visibility */
