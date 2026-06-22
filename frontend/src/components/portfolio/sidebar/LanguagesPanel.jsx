@@ -1,65 +1,28 @@
 import { useState, useEffect } from "react";
-import { add_skill, delete_skill } from "../../../api/skills";
-import { add_language, delete_language } from "../../../api/languages";
+import useInputChange from "../../../hooks/useInputChange";
+import useLanguages from "../../../hooks/useLanguages";
 
-export default function LanguagesPanel({ initialLanguages, portfolioID, canEdit, edit, levelMap, onRefresh }) {
-
-  const [languages, setLanguages] = useState([]);
-
-  // Reset languages and index whenever initialLanguages changes
-  useEffect(() => {
-    setLanguages(initialLanguages);
-  }, [initialLanguages]);
+export default function LanguagesPanel({ initialLanguages, portfolioID, canEdit, edit, refresh }) {
 
   const [language, setLanguage] = useState({
     language_name: "",
     proficiency_level: 1,
   });
 
-  // Handles updates for all languages form inputs
-  const handleLanguageChange = (e) => {
-    const { name, value } = e.target;
-    setLanguage((prev) => ({ ...prev, [name]: value }));
-  };
+  const levelMap = {
+        1: "Beginner",
+        2: "Competent",
+        3: "Proficient",
+    };
 
-  // Handles calling the add language API endpoint
-  const addToLanguagesList = async () => {
-    try {
+  const handleChange = useInputChange();
 
-      //construct request body 
-      const new_language = {
-        ...language,
-        portfolio_id: portfolioID,
-      };
-
-      // call the add language API endpoint and passes the new language data
-      await add_language(new_language);
-      onRefresh();
-
-      setLanguage({
-        language_name: "",
-        proficiency_level: 1,
-      });
-
-    } catch (error) {
-      //alerts the user in case of an error
-      alert("something went wrong")
-      console.error(error.response?.data || error.message);
-    }
-  };
-
-   // handle calling the delete language API endpoint
-  const handleDeleteLanguage = async (language_id) => {
-    try {
-       // call delete language API endpoint and pass the language id
-      await delete_language(language_id);
-      onRefresh();
-    } catch (error) {
-      // alert the user in case of an error
-      alert("something went wrong")
-      console.error(error.response?.data || error.message);
-    }
-  };
+  const { languages, addToLanguagesList, handleDeleteLanguage } = useLanguages(
+    initialLanguages,
+    portfolioID,
+    setLanguage,
+    refresh
+  )
 
 return (
     <div className="profile-field-block">
@@ -76,21 +39,21 @@ return (
             type="text"
             name="language_name"
             value={language.language_name}
-            onChange={handleLanguageChange}
+            onChange={(e) => handleChange(e, setLanguage)}
             placeholder="Enter here"
           />
 
           <select
             name="proficiency_level"
             value={language.proficiency_level}
-            onChange={handleLanguageChange}
+            onChange={(e) => handleChange(e, setLanguage)}
           >
             <option value={1}>Beginner</option>
-            <option value={3}>Competent</option>
-            <option value={5}>Proficient</option>
+            <option value={2}>Competent</option>
+            <option value={3}>Proficient</option>
           </select>
 
-          <button type="button" onClick={addToLanguagesList} className="add-btn-sidebar">
+          <button type="button" onClick={() => addToLanguagesList(language)} className="add-btn-sidebar">
             Add
           </button>
         </div>

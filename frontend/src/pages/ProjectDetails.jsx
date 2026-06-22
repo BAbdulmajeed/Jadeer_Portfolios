@@ -6,6 +6,8 @@ import ProfileHeader from "../components/portfolio/ProfileHeader";
 import Gallery from "../components/Gallery";
 import SkillsPanel from "../components/portfolio/sidebar/SkillsPanel";
 import LinksPanel from "../components/portfolio/sidebar/LinksPanel";
+import useInputChange from "../hooks/useInputChange";
+import useFilesUpload from "../hooks/useFilesUpload";
 
 export default function ProjectDetails({ canEdit }) {
 
@@ -21,7 +23,6 @@ export default function ProjectDetails({ canEdit }) {
     project_date: "",
   });
 
-  const [published, setPublished] = useState(false);
   const [skills, setSkills] = useState([])
   const [files, setFiles] = useState([])
   const [projectImages, setProjectImages] = useState([])
@@ -38,18 +39,14 @@ export default function ProjectDetails({ canEdit }) {
 
   // handles the publish switch button
   const switchPublishStatus = () => {
-    if (!canEdit) return;
-    const new_status = !published;
-    setPublished(new_status);
+    const new_status = !project.is_published;
+    setProject(prev => ({ ...prev, is_published: new_status }))
+    alert("publication status changed, please save changes.")
   };
 
 
   // Handles updates for all project form inputs
-  const handleProjectChange = (e) => {
-    if (!canEdit) return;
-    const { name, value } = e.target;
-    setProject((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleChange = useInputChange();
 
   // Fetch project 
   const fetchProject = async () => {
@@ -66,7 +63,6 @@ export default function ProjectDetails({ canEdit }) {
         project_date: data.project_date || null,
       }
       )
-      setPublished(data.is_published || false)
       setSkills(data.skills || [])
       setFiles(data.files || [])
       setProjectImages(data.files?.filter(f => f.file_purpose === "project_images") || [])
@@ -77,60 +73,25 @@ export default function ProjectDetails({ canEdit }) {
       if (coverFile) setCoverImage(`http://localhost:8000/${coverFile.storage_path}`);
 
     } catch (error) {
-      //alert user in case of an error
-      alert("something went wrong")
-      console.log(error)
+      console.error(error.response?.data || error.message);
     }
   }
 
   // handles file change API call
-  const handleFileChange = async (e, file_setter) => {
-
-    // Retrieve the file from the input event object
-    const changed_file = e.target.files[0]
-
-    // Check if there is a file, if false exit function
-    if (!changed_file) return;
-
-    // Store file data and paramaters
-    const purpose_label = e.target.name
-    const file_data = {
-      portfolio_id: project.portfolio_id,
-      file_purpose: purpose_label,
-      project_id: id
-    };
-
-    try {
-      let response;
-
-      // check if file already exits
-      // if true call the update file API endpoint to update and replace the old file with the new file
-      // if false call the add file endpoint to add file
-      const file_exists = files.find(f => f.file_purpose === purpose_label);
-      if (file_exists) {
-        response = await update_file(file_exists.id, purpose_label, changed_file)
-      } else {
-        response = await add_file(file_data, changed_file)
-      }
-      const file_url = `http://localhost:8000/${response.storage_path}`;
-      file_setter(file_url);
-
-      // Refresh all information to ensure data stays synchronized
-      await fetchProject();
-
-    } catch (error) {
-      // alert user in a case of an error
-      alert("something went wrong")
-      console.error(error.response?.data)
-    }
-
-
-  };
+  const {
+    handleFileChange
+  } = useFilesUpload(
+    files,
+    project.portfolio_id,
+    project.id,
+    fetchProject
+  );
 
   // handles the share button, when clicked copy the link to user's clipboard
   const handleShare = () => {
     const share_link = `http://localhost:5173/projects/${project.id}`;
     navigator.clipboard.writeText(share_link)
+    alert("Link copied!")
   }
 
   // Handles saving the updated project's information
@@ -141,20 +102,13 @@ export default function ProjectDetails({ canEdit }) {
 
     try {
 
-      // construct the request body
-      const updatedProject = {
-        ...project,
-        is_published: published,
-      };
-
       // call update_project API and send the updated project's info
-      const response = await update_project(id, updatedProject)
-      setProject(updatedProject)
+      const response = await update_project(id, project)
+      alert("changes saved!")
+      setProject(project)
 
     } catch (error) {
-      // alert user in case of an error
-      alert("something went wrong")
-      console.log(error)
+      console.error(error.response?.data || error.message);
     }
   }
 
@@ -164,15 +118,15 @@ export default function ProjectDetails({ canEdit }) {
   return (
     <div className="details-page">
 
-      <input type="file" name="project_cover" accept="image/*" ref={coverInputRef} className="hidden-file-input" onChange={(e) => handleFileChange(e, setCoverImage)} disabled={!canEdit} />
+      <input type="file" name="project_cover" accept="image/*" ref={coverInputRef} className="hidden-file-input" onChange={handleFileChange} disabled={!canEdit} />
 
       <ProfileHeader className="details-card" onSubmit={handleSaveProject}
         coverInputRef={coverInputRef}
         cover={coverImage}
-        canEdit={true}
+        canEdit={canEdit}
       />
 
-      <div className="details-card" onSubmit={handleSaveProject}>
+      <form className="details-card" onSubmit={handleSaveProject}>
 
         {/* 1. عنوان المشروع */}
         <label>
@@ -183,7 +137,7 @@ export default function ProjectDetails({ canEdit }) {
             type="text"
             name="title"
             value={project.title}
-            onChange={handleProjectChange}
+            onChange={(e) => handleChange(e, setProject)}
             disabled={!canEdit}
           />
         </label>
@@ -197,7 +151,7 @@ export default function ProjectDetails({ canEdit }) {
             type="date"
             name="project_date"
             value={project.project_date || ""}
-            onChange={handleProjectChange}
+            onChange={(e) => handleChange(e, setProject)}
             disabled={!canEdit}
           />
         </label>
@@ -211,7 +165,7 @@ export default function ProjectDetails({ canEdit }) {
               className="project-short-description" /* 💡 كلاس التنسيق */
               name="short_description"
               value={project.short_description}
-              onChange={handleProjectChange}
+              onChange={(e) => handleChange(e, setProject)}
               
             />
           </label>
@@ -225,7 +179,7 @@ export default function ProjectDetails({ canEdit }) {
             className="project-full-description" /* 💡 كلاس التنسيق */
             name="full_description"
             value={project.full_description}
-            onChange={handleProjectChange}
+            onChange={(e) => handleChange(e, setProject)}
             disabled={!canEdit}
           />
         </label>
@@ -234,7 +188,7 @@ export default function ProjectDetails({ canEdit }) {
           {canEdit && (
           <div  className="tab-actions-wrapper project-form-actions">
             <button className="publish-button" type="button" onClick={switchPublishStatus}>
-              {published ? "Unpublish" : "Publish"}
+              {project.is_published ? "Published" : "Unpublished"}
             </button>
             {project.is_published && (
               <button type="button" onClick={handleShare}>Share</button>
@@ -242,7 +196,7 @@ export default function ProjectDetails({ canEdit }) {
             <button type="submit" className="save-project-btn">Save</button>
           </div>
         )}
-      </div>
+      </form>
 
       <SkillsPanel
         initialSkills={skills}
@@ -250,7 +204,7 @@ export default function ProjectDetails({ canEdit }) {
         canEdit={canEdit}
         edit={edit}
         levelMap={levelMap}
-        onRefresh={fetchProject}
+        refresh={fetchProject}
         projectID={project.id}
       />
 
@@ -260,7 +214,7 @@ export default function ProjectDetails({ canEdit }) {
         canEdit={canEdit}
         edit={edit}
         levelMap={levelMap}
-        onRefresh={fetchProject}
+        refresh={fetchProject}
         projectID={project.id}
       />
 

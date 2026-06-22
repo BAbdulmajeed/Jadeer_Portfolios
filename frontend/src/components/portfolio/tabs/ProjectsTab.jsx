@@ -20,9 +20,7 @@ export default function ProjectsTab({ initialProjects, canEdit, portfolioID, ref
       await delete_project(project_id)
       refresh()
     } catch (error) {
-      //alert user in case of an error
-      alert("something went wrong")
-      console.log(error)
+      console.error(error.response?.data || error.message);
     }
   }
 

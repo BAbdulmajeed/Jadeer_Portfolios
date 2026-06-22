@@ -34,6 +34,8 @@ API.interceptors.response.use(
 
     // If unauthorized direct to unauthorized page
     if (error.response?.status === 401) {
+      // clear token
+      localStorage.removeItem("access_token");
       window.location.href = "http://localhost:5173/unauthorized";
     }
 

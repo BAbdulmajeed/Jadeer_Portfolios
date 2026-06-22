@@ -22,7 +22,7 @@ export default function Login() {
 
       // direct the user to their portfolio page
       navigate("/my-portfolio");
-    } catch (err) {
+    } catch (error) {
       // if an error occurs alert user
       setLoginFailed(true);
       console.error("Login failed:", err.response?.data || err.message);

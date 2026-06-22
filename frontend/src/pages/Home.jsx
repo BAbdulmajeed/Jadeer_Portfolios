@@ -35,13 +35,6 @@ export default function Home() {
               Get Started
             </button>
 
-            <button
-              className="secondary-btn"
-              onClick={() => navigate("/browse")}
-            >
-              Browse Portfolios
-            </button>
-
           </div>
 
         </div>
@@ -61,32 +54,6 @@ export default function Home() {
 
       </section>
 
-      {/* Featured Portfolios */}
-
-      <section className="featured">
-
-        <h2>Featured Portfolios</h2>
-
-        <div className="cards">
-
-          <div className="portfolio-card">
-            <h3>John Developer</h3>
-            <p>UI/UX Designer</p>
-          </div>
-
-          <div className="portfolio-card">
-            <h3>Sarah Developer</h3>
-            <p>Frontend Developer</p>
-          </div>
-
-          <div className="portfolio-card">
-            <h3>Mike Designer</h3>
-            <p>Photographer</p>
-          </div>
-
-        </div>
-
-      </section>
 
       {/* Statistics */}
 

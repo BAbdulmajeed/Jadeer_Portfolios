@@ -8,12 +8,6 @@ import LinksPanel from "./sidebar/LinksPanel";
 
 export default function ProfileSideBar({ user, portfolio, skills, languages, links, canEdit, edit, onRefresh, profileImage, avatarInputRef }) {
 
-    const levelMap = {
-        1: "Beginner",
-        3: "Competent",
-        5: "Proficient",
-    };
-
     return (
         <aside className="profile-sidebar">
 
@@ -26,7 +20,7 @@ export default function ProfileSideBar({ user, portfolio, skills, languages, lin
                 initialUser={user}
                 canEdit={canEdit}
                 edit={edit}
-                onRefresh={onRefresh}
+                refresh={onRefresh}
             />
 
             <PortfolioForm
@@ -41,8 +35,7 @@ export default function ProfileSideBar({ user, portfolio, skills, languages, lin
                 portfolioID={portfolio.id}
                 canEdit={canEdit}
                 edit={edit}
-                levelMap={levelMap}
-                onRefresh={onRefresh}
+                refresh={onRefresh}
             />
 
             <LanguagesPanel
@@ -50,8 +43,7 @@ export default function ProfileSideBar({ user, portfolio, skills, languages, lin
                 portfolioID={portfolio.id}
                 canEdit={canEdit}
                 edit={edit}
-                levelMap={levelMap}
-                onRefresh={onRefresh}
+                refresh={onRefresh}
             />
 
             <LinksPanel
@@ -59,7 +51,7 @@ export default function ProfileSideBar({ user, portfolio, skills, languages, lin
                 portfolioID={portfolio.id}
                 canEdit={canEdit}
                 edit={edit}
-                onRefresh={onRefresh}
+                refresh={onRefresh}
             />
         </aside>
     )

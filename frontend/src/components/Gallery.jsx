@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { add_file, delete_file } from "../api/files";
+import useFileUpload from "../hooks/useFilesUpload";
+import useFileDelete from "../hooks/useFileDelete";
+
 export default function Gallery({ initialFiles = [], canEdit, purposeLabel, acceptFiles, portfolioID, projectID = null, refresh }) {
 
     const [index, setIndex] = useState(0)
@@ -26,69 +29,44 @@ export default function Gallery({ initialFiles = [], canEdit, purposeLabel, acce
     // set current file based on index
     const currentFile = files.length > 0 ? files[index] : null;
 
-    // handle add file API endpoint
-    const handleAdd = async (e) => {
-        //Retrieve the file from the input event object
-        const newFile = e.target.files[0]
+    const {
+        handleFileChange
+    } = useFileUpload(
+        files,
+        portfolioID,
+        projectID,
+        refresh
+    );
 
-       // Check if there is a file, if false exit function
-        if (!newFile) return;
 
-        // Store file data and paramaters
-        const file_data = {
-            portfolio_id: portfolioID,
-            file_purpose: purposeLabel
-        };
-
-        // check if a project id is provided, if true add it to the request parameters
-        if (projectID != null) {
-            file_data.project_id = projectID
-        }
-
-        try {
-            // call add file API endpoint and add file
-            await add_file(file_data, newFile)
-            refresh();
-        } catch (error) {
-            //alert user in case of an error
-            alert("something went wrong")
-            console.log(error)
-        }
-    }
-
-    // handle calling the delete API endpoint
-    const handleDelete = async (file_id) => {
-        try {
-            // call delete file API endpoint and pass the file id
-            await delete_file(file_id)
-            refresh()
-        } catch (error) {
-            //alert user in case of an error
-            alert("something went wrong")
-            console.log(error)
-        }
-    }
+    const {
+        handleDelete
+    } = useFileDelete(refresh);
 
 
     return (
         <div className="gallery">
-            <input type="file" name={purposeLabel} accept={acceptFiles} ref={FileInputRef} style={{ display: 'none' }} onChange={handleAdd} disabled={!canEdit} />
+            <input type="file" name={purposeLabel} accept={acceptFiles} ref={FileInputRef} style={{ display: 'none' }} onChange={handleFileChange} disabled={!canEdit} />
             <div>
 
                 <div>
                     {canEdit && <>
-                        <button onClick={() => FileInputRef.current.click()}>
-                            Add
-                        </button>
+                        <div>
+                            <button onClick={() => FileInputRef.current.click()}>
+                                Add
+                            </button>
 
-                        <button onClick={() => handleDelete(currentFile.id)}>
-                            Delete
-                        </button>
+                            { (!files.length) ? null : <button onClick={() => handleDelete(currentFile.id)}>
+                                Delete
+                            </button> }
+                            
+
+                        </div>
                     </>}
 
                     {
-                        (!files.length) ? <p> No files found </p> :
-                            <> <button onClick={prevIndex}> ◀ </button>
+                        (!files.length) ? <p>  </p> :
+                            <>
                                 {
                                     (currentFile?.mime_type?.startsWith("image/")) ?
                                         <img
@@ -100,9 +78,14 @@ export default function Gallery({ initialFiles = [], canEdit, purposeLabel, acce
                                             className="gallery-media-iframe"
                                             title="PDF preview"
                                         />
-                                }
 
-                                <button onClick={nextIndex}> ▶ </button> </>
+                                }
+                                <div>
+                                    <button onClick={prevIndex}> ◀ </button>
+                                    <button onClick={nextIndex}> ▶ </button>
+                                </div>
+
+                            </>
                     }
 
                 </div>

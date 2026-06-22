@@ -1,41 +1,12 @@
 import { useState ,useEffect} from "react"
-import { update_my_info } from "../../../api/user";
+import useInputChange from "../../../hooks/useInputChange";
+import useUser from "../../../hooks/useUser";
 
-export default function UserInfoForm({initialUser, canEdit, edit, onRefresh}) {
+export default function UserInfoForm({initialUser, canEdit, edit, refresh}) {
 
-    const [user, setUser] = useState(initialUser);
+    const handleChange = useInputChange();
 
-    // Reset files and index whenever initialFiles changes
-    useEffect(() => {
-    setUser(initialUser);
-    }, [initialUser]);
-
-    // Handles updates for all user form inputs
-    const handleUserChange = (e) => {
-        const { name, value } = e.target;
-        setUser((prev) => ({ ...prev, [name]: value }));
-    };
-
-    // Handles saving the user's info 
-    const handleSave = async(e) => {
-
-        // prevents page from reloading after submiting page
-        e.preventDefault();
-
-        // construct the request body
-        const { id: user_id, ...user_payload } = user;
-
-        try {
-            // call the update API endpoint and pass it the data
-            await update_my_info(user_id, user_payload);
-            alert("changes saved!")
-            onRefresh();
-        } catch (error) {
-            //alert the user in case of an error
-            alert("something went wrong")
-            console.error("Save failed:", error);
-        }
-    }
+    const { user, setUser, handleSave } = useUser(initialUser, refresh)
 
     return (
         <form onSubmit={handleSave}>
@@ -46,7 +17,7 @@ export default function UserInfoForm({initialUser, canEdit, edit, onRefresh}) {
                 name="name"
                 value={user.name}
                 disabled={!canEdit}
-                onChange={handleUserChange}
+                onChange={(e) => handleChange(e, setUser)}
                 placeholder="Enter your full name"
             />
             {edit}
@@ -62,10 +33,36 @@ export default function UserInfoForm({initialUser, canEdit, edit, onRefresh}) {
                 name="location"
                 value={user.location}
                 disabled={!canEdit}
-                onChange={handleUserChange}
+                onChange={(e) => handleChange(e, setUser)}
                 placeholder="Enter location"
                  />
+
+                 <div className="profile-field-header">
+            <span>Birthday</span>
+              </div>
+              <input
+                type="date"
+                name="birth_day"
+                value={user.birth_day || ""}
+                disabled={!canEdit}
+                onChange={(e) => handleChange(e, setUser)}
+                placeholder="Enter birth day"
+                 />
+
+                 <div className="profile-field-header">
+            <span>Phone</span>
+              </div>
+              <input
+                type="tel"
+                name="phone_number"
+                value={user.phone_number || "" }
+                disabled={!canEdit}
+                onChange={(e) => handleChange(e, setUser)}
+                placeholder="Enter Phone number"
+                 />
             </div>
+
+            
 
 
        

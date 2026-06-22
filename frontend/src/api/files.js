@@ -32,7 +32,7 @@ export const update_file = async (file_id, file_purpose, file) => {
 
     // request parameters
     const params = {
-        file_id: file,
+        file_id: file_id,
         file_purpose: file_purpose
     };
 

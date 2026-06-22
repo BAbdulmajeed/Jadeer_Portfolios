@@ -1,83 +1,40 @@
 import { useState, useEffect } from "react";
 import { add_skill, delete_skill } from "../../../api/skills";
+import useSkills from "../../../hooks/useSkills";
+import useInputChange from "../../../hooks/useInputChange";
 
-export default function SkillsPanel({ initialSkills, portfolioID, canEdit, edit, levelMap, onRefresh, projectID = null }) {
-
-  const [skills, setSkills] = useState([]);
-
-   // Reset files and index whenever initialFiles changes
-  useEffect(() => {
-    const filtered_skills = projectID
-      ? initialSkills?.filter(s => s.project_id === projectID)
-      : initialSkills?.filter(s => s.project_id === null)
-
-    setSkills(filtered_skills);
-  }, [initialSkills, projectID]);
+export default function SkillsPanel({ initialSkills, portfolioID, canEdit, edit, refresh, projectID = null }) {
 
   const [skill, setSkill] = useState({
     skill_name: "",
     level_of_proficiency: 1,
     portfolio_id: null,
-    project_id: null,
+    project_id: null
   });
 
-   // Handles updates for all skill form inputs
-  const handleSkillChange = (e) => {
-    const { name, value } = e.target;
-    setSkill((prev) => ({ ...prev, [name]: value }));
+  const levelMap = {
+    1: "Beginner",
+    3: "Competent",
+    5: "Proficient",
   };
 
-   // Handles calling the add skills API endpoint
-  const addToSkillsList = async () => {
-    try {
-
-      //construct request body 
-      const payload = {
-        ...skill,
-        portfolio_id: portfolioID,
-      };
-
-      // check if a project id is provided, if true include it in the request body
-      if (projectID != null) {
-        payload.project_id = projectID
-      }
-
-      //call the add skill API endpoint
-      await add_skill(payload);
-      onRefresh();
-
-      setSkill({
-        skill_name: "",
-        level_of_proficiency: 1,
-        portfolio_id: null,
-        project_id: null,
-      });
-
-    } catch (error) {
-      //alert user in case of an error
-      alert("something went wrong")
-      console.error(error.response?.data || error.message);
-    }
-  };
-
-  // handle calling the delete skill API endpoint
-  const handleDeleteSkill = async (skillId) => {
-    try {
-      // handle calling the delete skill API endpoint
-      await delete_skill(skillId);
-      onRefresh();
-    } catch (error) {
-      //alert user in case of error
-      alert("something went wrong")
-      console.error(error.response?.data || error.message);
-    }
-  };
+  const { skills, addToSkillsList,
+    handleDeleteSkill } =
+    useSkills(portfolioID,
+      projectID,
+      initialSkills,
+      setSkill,
+      refresh)
 
 
- return (
+
+  const handleChange = useInputChange();
+
+
+  return (
     <div className="profile-field-block">
-      
-      
+
+
       <div className="profile-field-header" >
         <span>Skills</span>
       </div>
@@ -89,53 +46,54 @@ export default function SkillsPanel({ initialSkills, portfolioID, canEdit, edit,
             type="text"
             name="skill_name"
             value={skill.skill_name}
-            onChange={handleSkillChange}
+            onChange={(e) => handleChange(e, setSkill)}
             placeholder="Enter here"
           />
 
           <select
             name="level_of_proficiency"
             value={skill.level_of_proficiency}
-            onChange={handleSkillChange}
+            onChange={(e) => handleChange(e, setSkill)}
           >
             <option value={1}>Beginner</option>
             <option value={3}>Competent</option>
             <option value={5}>Proficient</option>
           </select>
 
-          <button type="button" onClick={addToSkillsList} className="add-btn-sidebar">
+          <button type="button" onClick={() => addToSkillsList(skill)} className="add-btn-sidebar">
             Add
           </button>
         </div>
       )}
-    
-    
+
+
       {/* قائمة عرض المهارات المضافة */}
       <ol>
         {skills.map((skill, index) => (
           <li key={index}>
-            <div className="skills-item-wrapper"> 
-              
-             
+            <div className="skills-item-wrapper">
+
+
               <span className="skill-name-text">{skill.skill_name}</span>
-              
+
               <button className="level-button" type="button" disabled>
                 {levelMap[skill.level_of_proficiency]}
               </button>
-              
+
               {canEdit && (
                 <button
                   type="button"
-                  className="delete-btn-inline" 
+                  className="delete-btn-inline"
                   onClick={() => handleDeleteSkill(skill.id)}
                 >
                   Delete
                 </button>
               )}
-              
+
             </div>
           </li>
         ))}
       </ol>
     </div>
-  )}
+  )
+}

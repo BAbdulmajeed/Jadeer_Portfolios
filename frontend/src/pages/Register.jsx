@@ -36,11 +36,9 @@ export default function Register() {
         // direct user to their portfolio page
         navigate("/my-portfolio")
 
-      } catch (err) {
-        // in case of an error alert user
-        alert("something went wrong")
+      } catch (error) {
         setRegistrationFailed(true)
-        console.error("Registration failed:", err.response?.data || err.message);
+        console.error(error.response?.data || error.message);
       }
     }
   };

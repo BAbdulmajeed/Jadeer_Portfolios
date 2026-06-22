@@ -4,9 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Browse from "./pages/Browse";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -24,9 +22,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/browse" element={<Browse />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/unauthorized" element={<UnauthorizedAccess />} />
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/login" element={<Login />} />
@@ -44,8 +40,6 @@ export default function App() {
 
         <Route
          path="/add-project/:id" element={<AddProject />} />
-         <Route path="/add-project" element={<AddProject />} 
-        />
 
         <Route
           path="/project-details/:id"

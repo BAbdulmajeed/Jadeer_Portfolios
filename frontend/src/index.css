@@ -7,7 +7,7 @@
   align-items: center;
   padding: 18px 60px;
   background: white;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -131,7 +131,7 @@
 .hero-right video {
   width: 450px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
 }
 
 .featured {
@@ -150,7 +150,7 @@
 .stats {
   margin-top: 60px;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -159,7 +159,7 @@
   padding: 25px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
 }
 
 .stat-box h3 {
@@ -170,22 +170,30 @@
 /* ==========================================================================
    3. صفحات التصفح والمعلومات (Browse, About & Contact)
    ========================================================================== */
-.browse-page, .about-page, .contact-page {
+.browse-page,
+.about-page,
+.contact-page {
   padding: 50px 80px;
 }
 
-.browse-header, .about-hero, .contact-header {
+.browse-header,
+.about-hero,
+.contact-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.browse-header h1, .about-hero h1, .contact-header h1 {
+.browse-header h1,
+.about-hero h1,
+.contact-header h1 {
   font-size: 45px;
   margin-bottom: 10px;
   color: #111827;
 }
 
-.browse-header p, .about-hero p, .contact-header p {
+.browse-header p,
+.about-hero p,
+.contact-header p {
   color: #64748b;
   max-width: 700px;
   margin: auto;
@@ -248,11 +256,12 @@
   gap: 25px;
 }
 
-.about-card, .contact-card {
+.about-card,
+.contact-card {
   background: white;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
 }
 
 .contact-card {
@@ -267,7 +276,8 @@
   color: #2563eb;
 }
 
-.about-card p, .about-card li {
+.about-card p,
+.about-card li {
   color: #64748b;
   line-height: 1.8;
 }
@@ -292,7 +302,7 @@
   background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
 }
 
 .auth-badge {
@@ -311,24 +321,29 @@
   margin-bottom: 25px;
 }
 
-.auth-card form, .contact-card form {
+.auth-card form,
+.contact-card form {
   display: flex;
   flex-direction: column;
 }
 
-.auth-card label, .contact-card label {
+.auth-card label,
+.contact-card label {
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-.auth-card input, .contact-card input, .contact-card textarea {
+.auth-card input,
+.contact-card input,
+.contact-card textarea {
   padding: 14px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
-.auth-card button, .contact-card button {
+.auth-card button,
+.contact-card button {
   background: #2563eb;
   color: white;
   border: none;
@@ -388,7 +403,7 @@ div.portfolio-page form {
   width: 100% !important;
 }
 
-div.portfolio-page .portfolio-card label{
+div.portfolio-page .portfolio-card label {
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
@@ -431,7 +446,7 @@ div.portfolio-page .portfolio-card textarea {
   background: #ffffff;
   padding: 25px;
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
   box-sizing: border-box;
   height: fit-content;
 }
@@ -464,7 +479,8 @@ div.portfolio-page .portfolio-card textarea {
   object-fit: cover;
 }
 
-.editable-text-btn, .section-edit-trigger {
+.editable-text-btn,
+.section-edit-trigger {
   background: none;
   border: none;
   padding: 0;
@@ -513,8 +529,8 @@ div.portfolio-page .portfolio-card textarea {
 }
 
 .profile-field-block textarea {
-  resize: none !important;      
-  overflow-y: auto !important;  
+  resize: none !important;
+  overflow-y: auto !important;
 }
 
 .profile-field-header {
@@ -546,7 +562,9 @@ div.portfolio-page .portfolio-card textarea {
   min-width: 0 !important;
 }
 
-.skills-list, .languages-list, .links-list {
+.skills-list,
+.languages-list,
+.links-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
@@ -575,29 +593,29 @@ div.portfolio-page .portfolio-card textarea {
 .profile-field-block ol {
   margin-top: 12px !important;
   margin-bottom: 5px !important;
-  padding-left: 20px !important;  
-  list-style-type: decimal !important; 
+  padding-left: 20px !important;
+  list-style-type: decimal !important;
 }
 
 .profile-field-block ol li {
-  margin-bottom: 12px !important;   
+  margin-bottom: 12px !important;
   color: #334155 !important;
   font-size: 14px !important;
   font-weight: 500 !important;
-  word-break: break-all !important; 
+  word-break: break-all !important;
 }
 
 /* إضافة حاوية مرنة داخلية للأزرار التابعة لكل سطر مضاف */
 .profile-field-block ol li .level-button,
 .profile-field-block ol li button {
-  margin-left: 8px !important;     
+  margin-left: 8px !important;
   vertical-align: middle !important;
 }
 
 
-.portfolio-form-actions, 
-.profile-sidebar button + button {
-  margin-left: 10px !important; 
+.portfolio-form-actions,
+.profile-sidebar button+button {
+  margin-left: 10px !important;
 }
 
 /* ==========================================================================
@@ -605,12 +623,12 @@ div.portfolio-page .portfolio-card textarea {
    ========================================================================== */
 .profile-field-block input,
 .profile-field-block select,
-.profile-sidebar textarea, 
+.profile-sidebar textarea,
 .location-field-block input,
 .details-card input[type="text"],
 .details-card input[type="date"],
 .details-card textarea {
-  border: 2px solid #e2e8f0 !important; 
+  border: 2px solid #e2e8f0 !important;
   box-sizing: border-box !important;
   border-radius: 12px !important;
   padding: 8px 12px !important;
@@ -632,10 +650,10 @@ div.portfolio-page .portfolio-card textarea {
 }
 
 /* أزرار الإضافة والحفظ الموحدة الدائرية للسايدبار */
-.add-btn-sidebar, 
-.location-field-block button, 
-button[type="submit"], 
- .profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):not(.level-button):not(.delete-btn-inline){
+.add-btn-sidebar,
+.location-field-block button,
+button[type="submit"],
+.profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):not(.level-button):not(.delete-btn-inline) {
   background-color: #70a1ff !important;
   color: #ffffff !important;
   border: none !important;
@@ -649,7 +667,7 @@ button[type="submit"],
 }
 
 .add-btn-sidebar:hover,
-.location-field-block button:hover, 
+.location-field-block button:hover,
 button[type="submit"]:hover,
 .profile-sidebar button:not(.add-btn-sidebar):not(.avatar-btn):not([class*="avatar"]):hover {
   background-color: #548cf5 !important;
@@ -663,7 +681,8 @@ button[type="submit"]:hover,
 
 
 .portfolio-external-link {
-  color: #70a1ff !important; /* مطابق للون الهوية الرئيسي للأزرار */
+  color: #70a1ff !important;
+  /* مطابق للون الهوية الرئيسي للأزرار */
   text-decoration: none !important;
   font-weight: 600 !important;
   transition: color 0.2s ease !important;
@@ -672,25 +691,26 @@ button[type="submit"]:hover,
 
 .portfolio-external-link:hover {
   color: #548cf5 !important;
-  text-decoration: underline !important; /* يظهر خط تحت الرابط عند التمرير للتنبيه */
+  text-decoration: underline !important;
+  /* يظهر خط تحت الرابط عند التمرير للتنبيه */
 }
 
 /* ضبط أزرار الحذف المضمنة داخل السطور لمنع تداخلها */
 .delete-btn-inline {
-  margin-left: auto !important; 
+  margin-left: auto !important;
   padding: 4px 10px !important;
   font-size: 11px !important;
 }
 
 
 /* الحاوية المرنة لأسطر العرض المضافة (مهارات، لغات، روابط) */
-.skills-item-wrapper, 
-.languages-item-wrapper, 
+.skills-item-wrapper,
+.languages-item-wrapper,
 .link-item-wrapper {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  justify-content: space-between !important; 
+  justify-content: space-between !important;
   width: 100% !important;
   gap: 10px !important;
   flex-wrap: nowrap !important;
@@ -698,7 +718,7 @@ button[type="submit"]:hover,
 }
 
 /* توحيد أسماء المهارات واللغات لتكون متناسقة */
-.skill-name-text, 
+.skill-name-text,
 .language-name-text {
   font-weight: 600 !important;
   color: #334155 !important;
@@ -713,11 +733,11 @@ button[type="submit"]:hover,
 .profile-field-block ol li .level-button,
 .details-card ol li .level-button,
 .level-button {
-  background-color: #f1f5f9 !important; 
-  color: #475569 !important;            
-  border: 1px solid #cbd5e1 !important;  
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
   padding: 5px 12px !important;
-  border-radius: 20px !important;       
+  border-radius: 20px !important;
   font-size: 12px !important;
   font-weight: 600 !important;
   white-space: nowrap !important;
@@ -730,17 +750,17 @@ button[type="submit"]:hover,
 .profile-field-block ol li button:not(.level-button),
 .details-card ol li button:not(.level-button),
 .delete-btn-inline {
-  background-color: #ef4444 !important; 
+  background-color: #ef4444 !important;
   color: #ffffff !important;
   border: none !important;
   padding: 5px 14px !important;
-  border-radius: 20px !important;       
+  border-radius: 20px !important;
   font-weight: 700 !important;
   font-size: 11px !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   flex-shrink: 0 !important;
-  margin-left: auto !important;          
+  margin-left: auto !important;
   transition: background-color 0.2s ease !important;
 }
 
@@ -748,12 +768,14 @@ button[type="submit"]:hover,
 .profile-field-block ol li button:not(.level-button):hover,
 .details-card ol li button:not(.level-button):hover,
 .delete-btn-inline:hover {
-  background-color: #dc2626 !important; 
+  background-color: #dc2626 !important;
 }
+
 /* ==========================================================================
    7. القسم الرئيسي وعرض التبويبات والمشاريع (Main Content & Tabs)
    ========================================================================== */
-.profile-main-content, .portfolio-main-tabs-wrapper {
+.profile-main-content,
+.portfolio-main-tabs-wrapper {
   flex: 1 1 600px;
   display: flex;
   flex-direction: column;
@@ -842,7 +864,7 @@ button[type="submit"]:hover,
   background: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.04);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .04);
   border: 1px solid #f1f5f9;
 }
 
@@ -853,6 +875,7 @@ button[type="submit"]:hover,
   border-radius: 10px;
   margin-bottom: 12px;
 }
+
 .empty-tab-placeholder {
   padding: 50px 20px;
   text-align: center;
@@ -869,6 +892,7 @@ button[type="submit"]:hover,
   color: white;
   transition: background-color 0.3s;
 }
+
 .project-actions .view-btn:hover {
   background-color: #1d4ed8;
 }
@@ -878,6 +902,7 @@ button[type="submit"]:hover,
   color: white;
   transition: background-color 0.3s;
 }
+
 .project-actions .edit-btn:hover {
   background-color: #d97706;
 }
@@ -887,6 +912,7 @@ button[type="submit"]:hover,
   color: white;
   transition: background-color 0.3s;
 }
+
 .project-actions .delete-btn:hover {
   background-color: #dc2626;
 }
@@ -911,6 +937,7 @@ button[type="submit"]:hover,
   background: #f8fafc;
   border-color: #94a3b8;
 }
+
 /* ==========================================================================
    8. تبويبات السيرة الذاتية والشهادات والتفاصيل (Resume, Certs & Details)
    ========================================================================== */
@@ -918,7 +945,8 @@ button[type="submit"]:hover,
   display: none !important;
 }
 
-.resume-actions-container, .certifications-gallery-container {
+.resume-actions-container,
+.certifications-gallery-container {
   display: flex !important;
   gap: 10px !important;
   justify-content: center !important;
@@ -962,16 +990,20 @@ button[type="submit"]:hover,
   color: white !important;
   border-color: #2563eb !important;
 }
+
 .view-resume-link:hover {
   background-color: #1d4ed8 !important;
 }
 
-.delete-resume-btn, .tab-actions-wrapper .delete-btn {
+.delete-resume-btn,
+.tab-actions-wrapper .delete-btn {
   background-color: #ef4444 !important;
   color: white !important;
   border-color: #ef4444 !important;
 }
-.delete-resume-btn:hover, .tab-actions-wrapper .delete-btn:hover {
+
+.delete-resume-btn:hover,
+.tab-actions-wrapper .delete-btn:hover {
   background-color: #dc2626 !important;
 }
 
@@ -995,13 +1027,14 @@ button[type="submit"]:hover,
 
 .details-card .tab-actions-wrapper button {
   background-color: #70a1ff !important;
-  color: #ffffff !important;            
+  color: #ffffff !important;
   border: 1px solid #70a1ff !important;
   padding: 8px 16px !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   border-radius: 8px !important;
 }
+
 .details-card .tab-actions-wrapper button:hover {
   background-color: #548eff !important;
 }
@@ -1016,20 +1049,23 @@ button[type="submit"]:hover,
   background-color: #2563eb !important;
   color: white !important;
 }
+
 .save-project-btn:hover {
   background-color: #1d4ed8 !important;
 }
 
 /* تنسيق الحاوية الكبرى لصفحة تفاصيل المشروع لجمع العناصر في المنتصف بعرض موحد */
 div.details-page {
-  max-width: 1000px !important;    /* العرض الأقصى المناسب ليتطابق مع باقي صفحات الموقع */
+  max-width: 1000px !important;
+  /* العرض الأقصى المناسب ليتطابق مع باقي صفحات الموقع */
   width: 100% !important;
-  margin: 0 auto !important;       /* لجعل الصفحة بأكملها تتوسط الشاشة */
+  margin: 0 auto !important;
+  /* لجعل الصفحة بأكملها تتوسط الشاشة */
   padding: 40px 20px !important;
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 30px !important;           
+  gap: 30px !important;
 }
 
 /* توحيد البطاقات والأقسام الداخلية (تفاصيل، مهارات، روابط، معرض) لتأخذ نفس التنسيق والعرض */
@@ -1040,7 +1076,7 @@ div.details-page .project-gallery-section {
   width: 100% !important;
   background: #ffffff !important;
   padding: 30px !important;
-  border-radius: 20px !important;  
+  border-radius: 20px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
   box-sizing: border-box !important;
 }
@@ -1085,7 +1121,8 @@ div.details-page .links-panel h3 {
   width: 95% !important;
 }
 
-.gallery-media-img, .gallery-media-iframe {
+.gallery-media-img,
+.gallery-media-iframe {
   width: 400px !important;
   height: 300px !important;
 }
@@ -1126,11 +1163,13 @@ div.details-page .links-panel h3 {
   flex-direction: column;
 }
 
-.footer-section h3, .footer-section h4 {
+.footer-section h3,
+.footer-section h4 {
   margin-bottom: 15px;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
   color: #cbd5e1;
   line-height: 1.8;
 }

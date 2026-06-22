@@ -1,73 +1,25 @@
 import { useState, useEffect } from "react";
-import { add_skill, delete_skill } from "../../../api/skills";
-import { add_link, delete_link } from "../../../api/externalLinks";
+import useInputChange from "../../../hooks/useInputChange";
+import useLinks from "../../../hooks/useLinks";
 
-export default function LinksPanel({ initialLinks, portfolioID, canEdit, edit, onRefresh, projectID = null }) {
-
-  const [links, setLinks] = useState([]);
-
-  // Reset files and index whenever initialFiles changes
-  useEffect(() => {
-    const filtered_links = projectID
-      ? initialLinks?.filter(l => l.project_id === projectID)
-      : initialLinks?.filter(l => l.project_id === null)
-
-    setLinks(filtered_links);
-  }, [initialLinks, projectID])
+export default function LinksPanel({ initialLinks, portfolioID, canEdit, edit, refresh, projectID = null }) {
 
   const [link, setLink] = useState({
-    label: "",
-    url: "",
-    portfolio_id: null,
-    project_id: null,
-  });
-
-   // Handles updates for all project form inputs
-  const handleLinkChange = (e) => {
-    const { name, value } = e.target;
-    setLink((prev) => ({ ...prev, [name]: value }));
-  };
-
-  // Handles calling the add links API endpoint
-  const addToLinksList = async () => {
-    try {
-      //construct the request body
-      const payload = {
-        ...link,
-        portfolio_id: portfolioID,
-      };
-
-      //check if a project id, if true add it to the request 
-      if (projectID) {
-        payload.project_id = projectID
-      }
-
-      //call add link API endpoint
-      await add_link(payload);
-      onRefresh();
-
-      setLink({
         label: "",
         url: "",
         portfolio_id: null,
         project_id: null,
-      });
+    });
 
-    } catch (error) {
-      //alert the user in case of an error
-      alert("something went wrong")
-      console.error(error.response?.data || error.message);
-    }
-  };
+    const handleChange = useInputChange();
 
-  const handleDeleteLink = async (link_id) => {
-    try {
-      await delete_link(link_id);
-      onRefresh();
-    } catch (error) {
-      console.error(error.response?.data || error.message);
-    }
-  };
+    const {links, addToLinksList, handleDeleteLink} = useLinks(
+      initialLinks,
+      portfolioID,
+      projectID,
+      setLink,
+      refresh
+    )
 
 
 
@@ -86,7 +38,7 @@ export default function LinksPanel({ initialLinks, portfolioID, canEdit, edit, o
             type="text"
             name="label"
             value={link.label}
-            onChange={handleLinkChange}
+            onChange={(e) => handleChange(e, setLink)}
             placeholder="Enter link label"
           />
 
@@ -95,11 +47,11 @@ export default function LinksPanel({ initialLinks, portfolioID, canEdit, edit, o
             type="url"
             name="url"
             value={link.url}
-            onChange={handleLinkChange}
+            onChange={(e) => handleChange(e, setLink)}
             placeholder="Enter URL"
           />
           
-          <button type="button" onClick={addToLinksList} className="add-btn-sidebar">
+          <button type="button" onClick={() => addToLinksList(link)} className="add-btn-sidebar">
             Add
           </button>
         </div>

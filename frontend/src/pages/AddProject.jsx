@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { add_project } from "../api/projects";
+import useInputChange from "../hooks/useInputChange";
 
 // Add Project page component for creating and publishing a new project.
 export default function AddProject() {
@@ -14,13 +15,7 @@ export default function AddProject() {
   });
 
   // Handles updates for all project form inputs
-  const handleProjectChange = (e) => {
-    // Extracts the input's name and value from the event
-    const { name, value } = e.target;
-
-    // Then updates only the matching field in the project state
-    setProject((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = useInputChange();
 
   // Handles saving the project's information
   const handleSave = async (e) => {
@@ -33,9 +28,7 @@ export default function AddProject() {
       const response = await add_project(id, project)
       navigate(`/project-details/${response.id}`)
     } catch (error) {
-      // if an error occurs alert user
-      alert("something went wrong")
-      console.log(error.response?.data);
+      console.error(error.response?.data || error.message);
     }
 
   }
@@ -58,7 +51,7 @@ export default function AddProject() {
               type="text"
               name="title"
               value={project.title}
-              onChange={handleProjectChange}
+              onChange={(e) => handleChange(e, setProject)}
               placeholder="Enter your project title"
             />
           </label>
@@ -70,7 +63,7 @@ export default function AddProject() {
               className="project-short-description"
               name="short_description"
               value={project.short_description}
-              onChange={handleProjectChange}
+              onChange={(e) => handleChange(e, setProject)}
               placeholder="Enter a short description of your project"
             />
           </label>
@@ -82,7 +75,7 @@ export default function AddProject() {
               className="project-full-description"
               name="full_description"
               value={project.full_description}
-              onChange={handleProjectChange}
+              onChange={(e) => handleChange(e, setProject)}
               placeholder="Enter your full project description"
             />
           </label>
@@ -95,7 +88,7 @@ export default function AddProject() {
               type="date"
               name="project_date"
               value={project.project_date}
-              onChange={handleProjectChange}
+              onChange={(e) => handleChange(e, setProject)}
             />
           </label>
 
