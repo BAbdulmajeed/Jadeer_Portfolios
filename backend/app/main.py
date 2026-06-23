@@ -22,7 +22,6 @@ import app.models
 app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
 
-# نحدد المواقع المسموح لها بالاتصال بالباك اند
 origins = [
     "http://localhost:5173"
 ]

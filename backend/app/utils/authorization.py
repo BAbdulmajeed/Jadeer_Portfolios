@@ -14,10 +14,6 @@ def get_current_user(
     token: str = Depends(oauth2_scheme),
     db=Depends(get_db)
 ):
-    #print("hhhhhhhhh")
-    #print(token)
-    
-    # fix not logged in user
     if not token:
         return type("GuestUser", (), {"id": None})()
     payload = decode_access_token(token)
